@@ -10,5 +10,6 @@
     <?= $this->Form->submit(__('Login')); ?>
     <?= $this->Form->end() ?>
 
-    <?= $this->Html->link("Add User", ['action' => 'add']) ?>
+    <?php echo $this->Html->link("Add User", ['action' => 'add'])
+    ?>
 </div>
