@@ -37,7 +37,6 @@ class PostsTable extends Table
     public function initialize(array $config): void
     {
         parent::initialize($config);
-
         $this->setTable('posts');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');

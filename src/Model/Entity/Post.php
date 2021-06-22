@@ -10,10 +10,11 @@ use Cake\ORM\Entity;
  * Post Entity
  *
  * @property int $id
- * @property string $title
- * @property string $body
- * @property string $image
- * @property \Cake\I18n\FrozenTime $posted_date
+ * @property string|null $title
+ * @property string|null $content
+ * @property \Cake\I18n\FrozenTime|null $created
+ * @property \Cake\I18n\FrozenTime|null $modified
+ * @property bool $published
  */
 class Post extends Entity
 {
@@ -30,6 +31,8 @@ class Post extends Entity
         'title' => true,
         'body' => true,
         'image' => true,
-        'posted_date' => true,
+        'created' => true,
+        'modified' => true,
+        'published' => true,
     ];
 }

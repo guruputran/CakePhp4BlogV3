@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2021 at 07:54 AM
+-- Generation Time: Jun 22, 2021 at 04:26 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -29,18 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `title` varchar(191) NOT NULL,
-  `body` text NOT NULL,
+  `title` varchar(191) DEFAULT NULL,
+  `body` text DEFAULT NULL,
   `image` varchar(191) NOT NULL,
-  `posted_date` datetime NOT NULL
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `body`, `image`, `posted_date`) VALUES
-(7, 'Test Pages', 'desmond Tito', 'notification.png', '2021-06-21 00:01:53');
+INSERT INTO `posts` (`id`, `title`, `body`, `image`, `created`, `modified`, `published`) VALUES
+(1, 'Another day Still Looking?', 'My Lion Ran off', '', '2008-06-19 18:26:11', '2021-06-22 00:26:02', 1),
+(2, 'A Good day', 'The Lion is back in one piece', '', '2008-06-19 18:26:11', '2008-06-19 18:26:11', 1),
+(3, 'Thank GOD', 'Everything belongs to my Father day', '', '2008-06-19 18:26:11', '2008-06-19 18:26:11', 1),
+(10, 'Instructor introduction', 'Yoga sadanam', 'gats.jpg', '2021-06-22 10:04:48', '2021-06-22 10:16:51', 1);
 
 -- --------------------------------------------------------
 
@@ -59,8 +64,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
-(2, 'rajppd@gmail.com', '$2y$10$RuufaBH40rVQNVv7oGT33uozuwM4927d5Nj1X9B/DDAj9C/1ycXwm'),
-(3, 'admin@admin.com', '$2y$10$/fiTNA4fVeU4mzMfHwb9Ou23km1knVhgJ12O0IBZDa38fPQRbML8m');
+(0, 'rajppd@gmail.com', '$2y$10$xm12R.Imbl5HyfQIIgXmnuhe.TB634YuRo3ZhcUr96PHr94puvO2q');
 
 --
 -- Indexes for dumped tables
@@ -73,12 +77,6 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -86,13 +84,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

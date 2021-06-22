@@ -16,7 +16,9 @@
                     <th><?= $this->Paginator->sort('title') ?></th>
                     <th><?= $this->Paginator->sort('body') ?></th>
                     <th><?= $this->Paginator->sort('image') ?></th>
-                    <th><?= $this->Paginator->sort('posted_date') ?></th>
+                    <th><?= $this->Paginator->sort('created') ?></th>
+                    <th><?= $this->Paginator->sort('modified') ?></th>
+                    <th><?= $this->Paginator->sort('published') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -27,7 +29,14 @@
                         <td><?= h($post->title) ?></td>
                         <td><?= h($post->body) ?></td>
                         <td> <?= @$this->Html->image($post->image, ['height' => '100']) ?></td>
-                        <td><?= h($post->posted_date) ?></td>
+                        <td><?= date_format($post->created, "l d-M-Y h:i a"); ?></td>
+                        <td><?= date_format($post->modified, "l d-M-Y h:i a"); ?></td>
+                        <td><?php if ($post->published == 1) {
+                                echo "Yes";
+                            } else {
+                                echo "No";
+                            } ?>
+                        </td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $post->id]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $post->id]) ?>

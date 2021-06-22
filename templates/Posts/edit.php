@@ -26,7 +26,7 @@
                 echo $this->Form->control('title');
                 echo $this->Form->control('body');
                 echo $this->Form->control('image_file', ['type' => 'file']);
-                echo $this->Form->control('posted_date');
+                echo $this->Form->control('published');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

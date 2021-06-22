@@ -60,7 +60,11 @@ class PostsController extends AppController
                     $image->moveTo($targetPath);
                 $post->image = $name;
             }
-
+            date_default_timezone_set("Asia/Singapore");
+            $post->created = date("Y-m-d h:i:sa");
+            $post->modified = date("Y-m-d h:i:sa");
+            // debug($post->created);
+            // exit();
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
 
@@ -83,25 +87,27 @@ class PostsController extends AppController
         $post = $this->Posts->get($id, [
             'contain' => [],
         ]);
-        $Old_image = $post->image;
         if ($this->request->is(['patch', 'post', 'put'])) {
             $post = $this->Posts->patchEntity($post, $this->request->getData());
-
+            $Old_image = $post->image;
             if (!$post->getErrors()) {
                 $image = $this->request->getData('image_file');
                 $name = $image->getClientFilename();
                 $targetPath = WWW_ROOT . 'img' . DS . $name;
                 // debug($image);
                 // exit;
-                if ($name)
+                if ($name) {
                     $image->moveTo($targetPath);
-                $post->image = $name;
-                @unlink(WWW_ROOT . 'img' . DS . $Old_image);
+                    $post->image = $name;
+                    @unlink(WWW_ROOT . 'img' . DS . $Old_image);
+                } else {
+                    //do nothing
+                }
             }
-
+            date_default_timezone_set("Asia/Singapore");
+            $post->modified = date("Y-m-d h:i:sa");
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The post could not be saved. Please, try again.'));
