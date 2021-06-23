@@ -17,10 +17,13 @@ class PostsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
+    public $paginate = [
+        // Other keys here.
+        'maxLimit' => 10
+    ];
     public function index()
     {
         $posts = $this->paginate($this->Posts);
-
         $this->set(compact('posts'));
     }
 
@@ -53,12 +56,13 @@ class PostsController extends AppController
             if (!$post->getErrors()) {
                 $image = $this->request->getData('image_file');
                 $name = $image->getClientFilename();
-                $targetPath = WWW_ROOT . 'img' . DS . $name;
-                // debug($image);
+                $targetPath = WWW_ROOT . 'img' . DS . uniqid() . '_' . $name;
+
+                // debug($targetPath);
                 // exit;
                 if ($name)
                     $image->moveTo($targetPath);
-                $post->image = $name;
+                $post->image = basename(parse_url($targetPath, PHP_URL_PATH));
             }
             date_default_timezone_set("Asia/Singapore");
             $post->created = date("Y-m-d h:i:sa");
@@ -93,19 +97,19 @@ class PostsController extends AppController
             if (!$post->getErrors()) {
                 $image = $this->request->getData('image_file');
                 $name = $image->getClientFilename();
-                $targetPath = WWW_ROOT . 'img' . DS . $name;
+                $targetPath = WWW_ROOT . 'img' . DS . uniqid() . '_' . $name;
                 // debug($image);
                 // exit;
                 if ($name) {
                     $image->moveTo($targetPath);
-                    $post->image = $name;
+                    $post->image = basename(parse_url($targetPath, PHP_URL_PATH));
                     @unlink(WWW_ROOT . 'img' . DS . $Old_image);
                 } else {
                     //do nothing
                 }
             }
             date_default_timezone_set("Asia/Singapore");
-            $post->modified = date("Y-m-d h:i:sa");
+            $post->modified = date("Y-m-d H:i:s");
             if ($this->Posts->save($post)) {
                 $this->Flash->success(__('The post has been saved.'));
                 return $this->redirect(['action' => 'index']);

@@ -74,8 +74,15 @@ class UsersController extends AppController
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
+        $pwd = $user->password;
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+            // debug($user->id);
+            // exit();
+            //https://stackoverflow.com/questions/43483494/cakephp-3-how-to-edit-user-without-changing-password-hashed
+            if (empty($user->password)) {
+                unset($user->password);
+            }
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 

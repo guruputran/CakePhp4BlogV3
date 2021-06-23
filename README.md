@@ -1,4 +1,10 @@
 # CakePHP Application Skeleton
+1. A fully working blog with cakephp version 4. This is version 3.
+2. Added bootstrap header (bbotstrap 4.5)
+3. Added custom css
+4. Modified validator to accomodate password empty accept for user edited
+5. Happy coding !
+
 
 ![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
@@ -42,7 +48,7 @@ automated upgrades, so you have to do any updates manually.
 
 ## Configuration
 
-Read and edit the environment specific `config/app_local.php` and setup the 
+Read and edit the environment specific `config/app_local.php` and setup the
 `'Datasources'` and any other configuration relevant for your application.
 Other environment agnostic settings can be changed in `config/app.php`.
 

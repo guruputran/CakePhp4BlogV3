@@ -1,0 +1,71 @@
+.pagination .current,
+.pagination .disabled {
+    float: left;
+    padding: 0 14px;
+    background-color: orchid;
+    cursor: default;
+    line-height: 34px;
+    border: 1px solid #000;
+
+}
+.pagination .current a,
+.pagination .disabled a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+li.prev{
+    background-color: rgb(110, 231, 195);
+
+}
+li.prev a{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+li.next a{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+li.next{
+    background-color: rgb(110, 231, 195);
+
+}
+.pagination li a{
+padding: 5px;
+text-decoration: none;
+}
+ul {
+    list-style-type: none;
+}
+.post-nav{
+margin-bottom: 11px;
+}
+
+/* Flash messages */
+.message {
+    padding: 1rem;
+
+    background: #eff8ff;
+    color: #2779bd;
+
+    border-color: #6cb2eb;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+.message.hidden {
+    display: none;
+}
+.message.success {
+    background: #e3fcec;
+    color: #1f9d55;
+    border-color: #51d88a;
+}
+.message.error {
+    background: #fcebea;
+    color: #cc1f1a;
+    border-color: #ef5753;
+}

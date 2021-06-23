@@ -1,22 +1,14 @@
-<?php
+<div class="post-nav">
 
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Post $post
- */
-?>
+    <?= $this->Html->link(__('List Posts'), ['action' => 'index'], array('class' => 'btn btn-primary btn-sm ')) ?>
+    <?= $this->Html->link(__('Edit Post'), ['action' => 'edit', $post->id], array('class' => 'btn btn-primary btn-sm ')) ?>
+    <?= $this->Html->link(__('New Post'), ['action' => 'add'], array('class' => 'btn btn-info btn-sm ')) ?>
+    <?= $this->Form->postLink(__('Delete Post'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'btn btn-danger btn-sm']) ?>
+
+
+</div>
 <div class="row">
-    <aside class="column">
-
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Post'), ['action' => 'edit', $post->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Post'), ['action' => 'delete', $post->id], ['confirm' => __('Are you sure you want to delete # {0}?', $post->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Posts'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Post'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column-responsive column-80">
+    <div class="col-md-6">
         <div class="posts view content">
             <h3><?= h($post->title) ?></h3>
             <div class="text">
