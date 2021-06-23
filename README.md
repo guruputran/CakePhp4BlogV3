@@ -3,7 +3,8 @@
 2. Added bootstrap header (bbotstrap 4.5)
 3. Added custom css
 4. Modified validator to accomodate password empty accept for user edited
-5. Happy coding !
+5. Pagination css and controller code changed for Posts and index in post.
+6. Happy coding !
 
 
 ![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=master)
